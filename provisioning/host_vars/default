@@ -1,6 +1,6 @@
 ---
 # project root in the default host (in this case Vagrant box)
-PROJECT_ROOT: "/var/www/ezpublish"
+PROJECT_ROOT: "/var/www/shared_folder/html"
 PROJECT_NAME: "ezpublish"
 
 HOST: "vagrant.local"
@@ -13,3 +13,11 @@ DB_NAME: "ezpublish"
 # We use eZ Publish specific VCL
 
 VARNISH_USE_DEFAULT_VCL: false
+
+# specific openconent roles variables
+
+# defaults file
+# role/oc_db_tools
+DB_DUMP_DIR: "/var/www/shared_folder/database_dumps"
+DB_DUMP_FILENAME: "database.sql"
+

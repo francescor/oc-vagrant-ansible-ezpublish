@@ -1,0 +1,29 @@
+---
+# tasks file 
+
+- name: ensure mysql service is up
+  action: service name=mysql state=started
+  tags: [restore_db]
+
+- name: drop db ready for restore
+  mysql_db:
+   login_user={{ USERNAME }} 
+   login_password={{ PASSWORD }}
+   name={{ DB_NAME }}
+   state=absent
+  when: DB_DUMP_DIR      is defined  and
+        DB_DUMP_FILENAME is defined
+  tags: [restore_db]
+
+- name: Create the dev database
+  mysql_db: name={{ DB_NAME }} state=present encoding=utf8 collation=utf8_general_ci
+  tags: [restore_db]
+
+
+# import db from DB_DUMP_DIR/DB_DUMP_FILENAME /database_dump/mysql/database.sql only if DB is empty
+- name: restore db
+  mysql_db: name={{ DB_NAME }} state=import target=/var/www/{{ DB_DUMP_DIR }}/{{ DB_DUMP_FILENAME }}
+  when: DB_DUMP_DIR      is defined  and
+        DB_DUMP_FILENAME is defined
+  tags: [restore_db]
+

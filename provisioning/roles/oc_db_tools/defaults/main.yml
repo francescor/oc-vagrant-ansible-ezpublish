@@ -1,0 +1,5 @@
+---
+# defaults file
+#DB_DUMP_DIR: database_dump
+#DB_DUMP_FILENAME: database.sql
+

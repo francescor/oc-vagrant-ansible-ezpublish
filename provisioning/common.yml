@@ -30,5 +30,6 @@
     - common
     - { role: apache, use_htaccess: false }
     - ezfind-solr
+    - oc_db_tools
 
   tasks:
