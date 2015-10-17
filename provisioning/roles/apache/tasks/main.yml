@@ -44,7 +44,9 @@
   tags: [apache2]
 
 - name: installing website config (virtual host variant) {{ PROJECT_NAME }}
-  template: src=site_vhost.j2 dest={{ APACHE_SITES_AVAILABLE_CONFIG_PATH }}/{{ PROJECT_NAME }}.conf
+  #template: src=site_vhost.j2 dest={{ APACHE_SITES_AVAILABLE_CONFIG_PATH }}/{{ PROJECT_NAME }}.conf
+  template: src=site_vhost_legacy.j2 dest={{ APACHE_SITES_AVAILABLE_CONFIG_PATH }}/{{ PROJECT_NAME }}.conf
+
   notify:
   - reload Apache
   when: use_htaccess == false
