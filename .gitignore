@@ -20,3 +20,4 @@
 /web/robots.txt
 composer.phar
 .DS_Store
+/shared_folder/
